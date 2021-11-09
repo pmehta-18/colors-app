@@ -26,7 +26,7 @@ export default function App() {
   };
   return (
     <div className="App">
-      <input value={word} onChange={(e) => {setWord(e.target.value); setColors([]);}} />
+      <input value={word} onChange={(e) => {setWord(e.target.value); setColors([]);}} placeholder={"`ash`, `banana`, `cardboard`"} />
       <button onClick={handleClick} className="action-button">Find colors</button>
       <div className="color-grid">
         {colors.map((color) => {
