@@ -1,6 +1,7 @@
 import "./index.css";
 import { useEffect, useState } from "react";
 import { getColorShades, getData } from "./utils/helper";
+import Values from "values.js";
 
 export default function App() {
   const [word, setWord] = useState("");
@@ -25,12 +26,12 @@ export default function App() {
   };
   return (
     <div className="App">
-      <input value={word} onChange={(e) => setWord(e.target.value)} />
+      <input value={word} onChange={(e) => {setWord(e.target.value); setColors([]);}} />
       <button onClick={handleClick} className="action-button">Find colors</button>
       <div className="color-grid">
         {colors.map((color) => {
           return <div className="color--grid-item" key={color.hex} style={{backgroundColor: color.hex}}>
-            <div className="color-code" style={{color: data[word]}}>{color.hex}</div>
+            <div className="color-code" style={{color: new Values(data[word]).shade(100).hexString()}}>{color.hex}</div>
           </div>
         })}
       </div>
